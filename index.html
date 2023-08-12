@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#">
+                <h2><i class="fa-solid fa-clapperboard fa-bounce fa-xl" style="color: #000000;"></i>
+                    MOVIE MANIA</h2>
+            </a>
+        </div>
+    </nav>
+
+    <div id="firstId">
+        <div class="container w-50 " id="secondId">
+
+            <form action="">
+                <input type="text" placeholder="Enter The Movie Name Here....." id="movieInput" class="w-50 mt-3 mb-3"
+                    name="searching">
+                <div class="mt-4 mx-5 "> <button onclick="searchData()" type="button"
+                        class="btn btn-success mb-4">Search</button>
+                    <button onclick="refreshData()" type="button" class="btn btn-danger mb-4">Refresh</button>
+                    <div id="result" class="w-50 container"></div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function searchData() {
+
+        movieName = movieInput.value
+
+
+        fetch(`https://www.omdbapi.com/?apikey=f18570ab&t=${movieName}`)
+            .then((data) => data.json())
+            .then((data) => displayData(data))
+        // console.log(data);
+
+        function displayData(cdata) {
+            mPoster = cdata.Poster
+            mTitle = cdata.Title
+            // console.log(mTitle);
+            mYear = cdata.Year
+            mDirector = cdata.Director
+            mReleased = cdata.Released
+
+
+            result.innerHTML = `
+            <img src=${mPoster} id="img1">
+            <h2>${mTitle}</h2
+            <h5>Year-${mYear}</h5>
+            <h5>Director-${mDirector}</h5>
+            <h5>Released-${mReleased}</h5>`
+        }
+    }
+
+    function refreshData() {
+        result.innerHTML = ``
+        movieInput.value = ""
+    }
+</script>
+
+</html>

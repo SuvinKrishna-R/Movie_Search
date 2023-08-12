@@ -1,0 +1,41 @@
+body{
+    background-image: url(https://i.postimg.cc/zDR6pL7F/movie-img.webp);
+    background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+
+#secondId{
+
+    background-color: rgba(0, 0, 0, 0.867);
+    border-radius: 9px;
+   
+}
+
+#firstId{
+    height: 50rem;
+}
+form{
+    text-align: center;
+    margin-top: 17%;
+    
+}
+
+
+
+#movieInput{
+    height: 7vh;
+    border-radius: 5px;
+    border-style:inherit
+}
+
+#result{
+    width: 100%;
+    color: white;
+    padding-left: 2px;
+}
+
+#img1{
+    /* margin-left: -50px; */
+    width: 100%;
+}
+
